@@ -1,85 +1,58 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# EventXperts
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+**EventXperts** is an event management platform designed to simplify the organization and tracking of small-scale events. It provides event organizers with tools to manage bookings, handle billing, access a marketplace for event supplies, and showcase galleries of past events. The platform is built with a microservices architecture, making it highly scalable and modular.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Key Features
 
-## Description
+1. **Calendar Management**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+   - Track booking dates and add event-related information such as auspicious days (Muhurtalu) and Telugu calendar-specific features like Manchirojulu.
+   - Organizers can log their event bookings with details like event name, address, contact info, and booking specifics.
 
-## Project setup
+2. **User Roles**
 
-```bash
-$ npm install
-```
+   - **User**: Can explore event listings and access services.
+   - **Organizer**: Can manage their event bookings, add events to the calendar, and access billing tools.
+   - **Store Owner**: Can list products for sale (e.g., decorations, electronics) in the marketplace.
+   - **Super Admin**: Manages users and organizers, with additional privileges assigned through Auth0.
 
-## Compile and run the project
+3. **Marketplace & Store**
 
-```bash
-# development
-$ npm run start
+   - A marketplace where users can buy and sell event-related items.
+   - A store managed by the platform offering decorations, electronic items, and more.
 
-# watch mode
-$ npm run start:dev
+4. **Gallery**
+   - Organizers can upload event photos.
+   - Using machine learning, attendees can find photos of events they attended.
 
-# production mode
-$ npm run start:prod
-```
+## Microservices Architecture
 
-## Run tests
+The EventXperts platform follows a microservices architecture to ensure scalability and maintainability. The core services include:
 
-```bash
-# unit tests
-$ npm run test
+- **API Gateway**: Acts as the central point for routing client requests to the respective services.
+- **User Service**: Manages user registration, authentication, and profile management.
+- **Calendar Service**: Handles event and booking management, calendar features, and date-specific event tracking.
+- **Marketplace Service**: Manages product listings, buying, and selling within the marketplace.
+- **Gallery Service**: Allows uploading and managing photos and galleries for events.
 
-# e2e tests
-$ npm run test:e2e
+## Tech Stack
 
-# test coverage
-$ npm run test:cov
-```
+- **Backend**:
 
-## Resources
+  - Framework: NestJS (Node.js)
+  - Database: PostgreSQL
+  - Message Broker: Kafka (for asynchronous communication between services)
+  - Authentication: Auth0 and RBA [Role based access] (OAuth2, JWT for securing API calls)
 
-Check out a few resources that may come in handy when working with NestJS:
+- **Frontend**:
+  - Framework: Flutter (for building cross-platform mobile apps)
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Authentication & Authorization
 
-## Support
+- **Auth0** is used for managing authentication and authorization. Users can register and log in via the API Gateway, where their roles (User, Organizer, Store Owner) are assigned during registration.
+- **Admin roles** are managed through the Auth0 dashboard and have elevated privileges.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Communication Between Services
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- Services communicate via **Kafka**, ensuring decoupled and asynchronous communication.
+- The **API Gateway** handles client requests and forwards them to the appropriate services using Apollo Grahpql (Gateway).
