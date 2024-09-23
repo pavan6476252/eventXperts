@@ -3,6 +3,6 @@ export const USER_ROLE_KEY = "roles";
 export enum ROLE_TYPE {
   ADMIN = "ADMIN",
   USER = "USER",
-  ORGANIZER = "organizer",
-  ORGANIZATION = "organization",
+  ORGANIZER = "ORGANIZER",
+  ORGANIZATION = "ORGANIZATION",
 }

@@ -30,16 +30,21 @@
     "@nestjs/graphql": "^12.2.0",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/typeorm": "^10.0.2",
     "@profusion/apollo-federation-upload": "^4.2.0",
     "@types/passport-jwt": "^4.0.1",
     "axios": "^1.7.7",
+    "cloudinary": "^2.5.0",
     "concurrently": "^9.0.1",
     "express-jwt": "^8.4.1",
     "graphql": "^16.9.0",
     "jwks-rsa": "^3.1.0",
+    "multer": "^1.4.5-lts.1",
     "passport-jwt": "^4.0.1",
+    "pg": "^8.13.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -47,6 +52,7 @@
     "@nestjs/testing": "^10.0.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
+    "@types/multer": "^1.4.12",
     "@types/node": "^20.3.1",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
@@ -86,7 +92,10 @@
     ],
     "moduleNameMapper": {
       "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
-      "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1"
+      "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
+      "^@app/database(|/.*)$": "<rootDir>/libs/database/src/$1",
+      "^@app/storage(|/.*)$": "<rootDir>/libs/storage/src/$1",
+      "^@app/upload(|/.*)$": "<rootDir>/libs/upload/src/$1"
     }
   }
 }

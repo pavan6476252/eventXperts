@@ -7,3 +7,4 @@ export * from './auth.service';
 export *from './role/role.guard'
 export *from './role/roles.decorator'
 
+export * from './decorators/current-user.decorator'

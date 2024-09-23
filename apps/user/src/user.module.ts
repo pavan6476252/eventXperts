@@ -1,17 +1,24 @@
 import { Module } from "@nestjs/common";
-import { UserController } from "./user.controller";
+import { UserResolver } from "./user.resolver";
 import { UserService } from "./user.service";
 import { GraphQLModule } from "@nestjs/graphql";
-import { ApolloFederationDriver } from "@nestjs/apollo";
+import {
+  ApolloFederationDriver,
+  ApolloFederationDriverConfig,
+} from "@nestjs/apollo";
+import { AuthModule } from "@app/auth";
+import { DatabaseModule } from "@app/database";
+import { Role, User } from "@app/shared";
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
       typePaths: ["**/*.graphql"],
     }),
+    DatabaseModule.register({ entities: [User, Role], synchronize: true }),
+    AuthModule,
   ],
-  controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, UserResolver],
 })
 export class UserModule {}

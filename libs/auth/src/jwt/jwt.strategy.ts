@@ -5,6 +5,7 @@ import { ConfigService } from "@nestjs/config";
 import { EnvironmentVariables } from "../utils/configuration";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
+import { JwtPayload } from "../interface/Jwt-payload.interface";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -23,7 +24,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       algorithms: ["RS256"],
     });
   }
-  validate(payload: any): any {
+  validate(payload: JwtPayload): any {
     console.log(payload);
     return payload;
   }

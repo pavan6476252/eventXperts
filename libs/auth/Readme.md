@@ -172,3 +172,9 @@ export interface AuthenticatedRequest extends Request {
 1. **Login**: A user logs in via Auth0, receives a JWT token, and includes it in the `Authorization` header for API requests.
 2. **Access Control**: Controllers use `JwtAuthGuard` and `RoleGuard` to restrict access based on authentication and roles.
 3. **Roles**: Roles are assigned and verified via the Auth0 Management API using the `AuthService`.
+
+
+## License
+
+This library is licensed under the MIT License.
+ 
